@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
+import { initFirebase } from './utils/firebase'
 
 class App extends Component {
-  render() {
-    return (
-      <div>
+    constructor() {
+        super()
+        initFirebase();
+    }
+
+    render() {
+        return (
+            <div>
         
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 }
 
 export default App;
