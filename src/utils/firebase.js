@@ -2,8 +2,11 @@ import firebase from 'firebase'
 import { config } from './../config.js'
 import * as logger from './logger'
 
+var db
+
 export function initFirebase () {
     firebase.initializeApp(config.firebase);
+    db = firebase.database()
     logger.log('Firebase is starting')
 }
 
@@ -28,4 +31,14 @@ export function auth () {
             }
         });
     });
+}
+
+export function getData (path) {
+    return new Promise((resolve, reject) => {
+        db.ref(path).once('value', function(snap) {
+            resolve(snap.val())
+        }, err => {
+            reject(err)
+        })
+    })
 }

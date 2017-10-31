@@ -1,11 +1,33 @@
 import React, { Component } from 'react'
 import './index.css'
+import * as logger from './../../utils/logger'
+import { getGroupInfo } from './../../utils/group'
 
 export default class UserList extends Component {
+    constructor() {
+        super()
+        this.state = {
+            groupInfo: {}
+        }
+    }
+
+    componentDidMount() {
+        getGroupInfo().then(data => {
+            this.setState({ groupInfo: data })
+            logger.log('groupInfo', data)
+        }, err => {
+            logger.log(err)
+        })
+    }
+
     render() {
         return (
-            <div className="col-md-3">
-                sssss
+            <div className="col-md-3 userlist-wrapper">
+                <div className="row">
+                    <div className="col-xs-12 text-center title">
+                        {this.state.groupInfo.name}
+                    </div>
+                </div>
             </div>
         )
     }

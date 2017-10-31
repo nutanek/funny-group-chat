@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+import UserList from './../UserList/'
 
 export default class Main extends Component {
     render() {
@@ -9,7 +10,7 @@ export default class Main extends Component {
                     <div className="col-md-9">
                         sss
                     </div>
-                    
+                    <UserList />
                 </div>
             </div>  
         )
