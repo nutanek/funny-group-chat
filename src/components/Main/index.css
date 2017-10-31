@@ -1,0 +1,6 @@
+.main-wrapper {
+    height: calc(100vh - 20px);
+    background-color: #FFF;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

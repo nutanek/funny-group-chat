@@ -4,6 +4,7 @@ import * as logger from './logger'
 
 export function initFirebase () {
     firebase.initializeApp(config.firebase);
+    logger.log('Firebase is starting')
 }
 
 export function auth () {
