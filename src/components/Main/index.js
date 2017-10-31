@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+import ChatBox from './../ChatBox/'
 import UserList from './../UserList/'
 
 export default class Main extends Component {
@@ -7,9 +8,7 @@ export default class Main extends Component {
         return (
             <div className="container main-wrapper">
                 <div className="row">
-                    <div className="col-md-9">
-                        sss
-                    </div>
+                    <ChatBox />
                     <UserList />
                 </div>
             </div>  
