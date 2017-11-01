@@ -18,7 +18,7 @@ export default class Avatar extends Component {
         let firstChar = this._getFirstChar(this.props.name)
         return (
             <div className="avatar-wrapper" style={{backgroundColor: color}}>
-                {firstChar}
+                <div className="name">{firstChar}</div>
             </div>
         )
     }

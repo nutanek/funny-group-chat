@@ -32,7 +32,7 @@ export default class Main extends Component {
         return (
             <div className="container main-wrapper">
                 <div className="row">
-                    <ChatBox />
+                    <ChatBox profiles={this.state.profiles}/>
                     <Sidebar profiles={this.state.profiles}/>
                 </div>
             </div>  

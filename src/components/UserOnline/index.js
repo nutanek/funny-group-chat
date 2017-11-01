@@ -9,11 +9,11 @@ export default class UserOnline extends Component {
             <div className="col-xs-12 useronline-wrapper">
                 {
                     this.props.profiles.map((data, key) =>
-                        <div className="row" key={key}>
-                            <div className="col-xs-3">
+                        <div className="row list" key={key}>
+                            <div className="col-xs-2">
                                 <Avatar name={data.info.name}/>
                             </div>
-                            <div className="col-xs-9">{data.info.name}</div>
+                            <div className="col-xs-10 displayname">{data.info.name}</div>
                         </div>
                     )
                 }

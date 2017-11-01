@@ -2,3 +2,47 @@
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.chatitem-wrapper .avatar {
+    margin-top: 10px;
+}
+
+.chatitem-wrapper .message {
+    max-width: 300px;
+    padding: 8px 10px;
+    border-radius:  10px;
+    display: none;
+    display: inline-block;
+    position: relative;
+}
+
+.chatitem-wrapper .message-left {
+    background: #FFCC00;    
+}
+
+.chatitem-wrapper .message-right {
+    background: #DDDDDD; 
+    margin-right: 10px;      
+}
+
+.chatitem-wrapper .message .arrow-left {
+    width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-right: 8px solid #FFCC00;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    top: 10px;
+    left: -8px;
+}
+
+.chatitem-wrapper .message .arrow-right {
+    width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-left: 8px solid #DDD;
+	border-bottom: 5px solid transparent;
+    position: absolute;
+    top: 10px;
+    right: -8px;
+}

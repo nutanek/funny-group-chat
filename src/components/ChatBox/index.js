@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Base64 } from 'js-base64'
+import _ from 'lodash'
 import './index.css'
 import { sendMessage } from './../../utils/chat'
 import { getRef } from './../../utils/firebase'
@@ -51,6 +52,12 @@ export default class ChatBox extends Component {
         })
     }
 
+    _getDisplayname(uid) {
+        let profileInfo = _.find(this.props.profiles, ['uid', uid]);
+        logger.log(profileInfo)
+        return profileInfo.info.name
+    }
+
     render() {
         return (
             <div className="col-md-9">
@@ -60,7 +67,8 @@ export default class ChatBox extends Component {
                             <ChatItem 
                                 key={index}
                                 msg={data.msg}
-                                uid={data.uid}>
+                                uid={data.uid}                            
+                                displayname={this._getDisplayname(data.uid)}>
                             </ChatItem>
                         )
                     }
