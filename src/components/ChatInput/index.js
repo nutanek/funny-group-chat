@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import './index.css'
+import Emoji from './../Emoji/'
 
 export default class ChatBox extends Component {
     constructor() {
         super()
         this.state = {
-            text: ''
+            text: '',
+            isOpenEmoji: false
         }
     }
 
@@ -27,6 +29,19 @@ export default class ChatBox extends Component {
         }
     }
 
+    _toggleEmoji() {
+        this.setState({
+            isOpenEmoji: !this.state.isOpenEmoji
+        })
+    }
+
+    _selectEmoji(emo) {
+        this.setState({
+            text: this.state.text + emo,
+            isOpenEmoji: false
+        })
+    }
+
     render() {
         return (
             <div className="row chatinput-wrapper">
@@ -36,11 +51,16 @@ export default class ChatBox extends Component {
                             type="text" 
                             className="form-control" 
                             placeholder="say something..."
+                            onClick={()=>this.setState({isOpenEmoji: false})}
                             onKeyPress={this._checKEnter.bind(this)}
                             onChange={this._changeMessage.bind(this)}
                             value={this.state.text}
                             />
                         <span className="input-group-btn">
+                            <Emoji isOpen={this.state.isOpenEmoji} select={this._selectEmoji.bind(this)}/>
+                            <button className="btn btn-default" onClick={()=>this._toggleEmoji()}>
+                                😃
+                            </button>
                             <button 
                                 className="btn btn-default" 
                                 type="button"
