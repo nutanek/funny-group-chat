@@ -4,14 +4,14 @@ import Avatar from './../Avatar/'
 
 export default class ChatItem extends Component {
     render() {
-        let { msg, uid, displayname } = this.props
+        let { msg, uid, displayname, color } = this.props
 
         if (localStorage.getItem('uid') === uid) {
             return (
                 <div className="row chatitem-wrapper">
                     <div className="col-xs-12 text-right">
-                        <div className="message message-right">
-                            <div className="arrow-right"></div>                            
+                        <div className="message message-right" style={{backgroundColor: color}}>
+                            <div className="arrow-right" style={{borderLeftColor: color}}></div>                            
                             {msg}
                         </div>
                     </div>
@@ -26,8 +26,8 @@ export default class ChatItem extends Component {
                         </div>
                         <div className="col-xs-11">
                             <div className="displayname">{displayname}</div>
-                            <div className="message message-left">
-                                <div className="arrow-left"></div>                                
+                            <div className="message message-left" style={{backgroundColor: color}}>
+                                <div className="arrow-left" style={{borderRightColor: color}}></div>                                
                                 {msg}
                             </div>
                         </div>

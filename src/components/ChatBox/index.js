@@ -60,10 +60,10 @@ export default class ChatBox extends Component {
         })
     }
 
-    _getDisplayname(uid) {
+    _getProfileInfo(uid) {
         let profileInfo = _.find(this.props.profiles, ['uid', uid]);
         logger.log(profileInfo)
-        return profileInfo.info.name
+        return profileInfo.info
     }
 
     render() {
@@ -71,14 +71,18 @@ export default class ChatBox extends Component {
             <div className="col-md-9">
                 <div className="chatbox-wrapper" id="chat-box">
                     {
-                        this.state.messages.map((data, index) => 
-                            <ChatItem 
-                                key={index}
-                                msg={data.msg}
-                                uid={data.uid}                            
-                                displayname={this._getDisplayname(data.uid)}>
-                            </ChatItem>
-                        )
+                        this.state.messages.map((data, index) => {
+                            let profileInfo = this._getProfileInfo(data.uid)
+                            return (
+                                <ChatItem 
+                                    key={index}
+                                    msg={data.msg}
+                                    uid={data.uid}
+                                    color={profileInfo.color}                            
+                                    displayname={profileInfo.name}>
+                                </ChatItem>
+                            )
+                        })
                     }
                 </div>
                 <ChatInput send={this._sendMessage.bind(this)}/>

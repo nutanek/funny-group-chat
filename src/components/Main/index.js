@@ -17,6 +17,7 @@ export default class Main extends Component {
     componentDidMount() {
         this._onUserAdded()
         this._onUserRemoved()
+        this._onUserChanged()
     }
 
     _onUserAdded() {
@@ -35,17 +36,37 @@ export default class Main extends Component {
         })
     }
 
+    _onUserChanged() {
+        let self = this
+        let ref = getRef('profiles')
+        ref.on('child_changed', function(snap) {
+            let profile = {
+                uid: snap.key,
+                info: snap.val()
+            }
+            let profileIndex = _.findIndex(self.state.profiles, ['uid', snap.key])
+            let profiles = self.state.profiles
+            if (profileIndex !== -1) {
+                profiles[profileIndex] = profile
+                self.setState({
+                    profiles
+                })
+            }
+        }, err => {
+            logger.log(err)
+        })
+    }
+
     _onUserRemoved() {
         let self = this
         let ref = getRef('profiles')
         ref.on('child_removed', function(snap) {
-            let profileIndex = _.findIndex(self.state.profiles, ['uid', snap.key]);
+            let profileIndex = _.findIndex(self.state.profiles, ['uid', snap.key])
             let profiles = self.state.profiles
             if (profileIndex !== -1) {
                 profiles[profileIndex].deleted = true
-                console.log(profiles)
                 self.setState({
-                    profiles,
+                    profiles
                 })
             }
         }, err => {
