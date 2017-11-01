@@ -47,6 +47,14 @@ export default class ChatBox extends Component {
             self.setState({
                 messages: [...self.state.messages, data]
             })
+            // scroll to bottom
+            let elem = document.getElementById('chat-box');
+            setTimeout(() => {
+                elem.scrollTop = elem.scrollHeight;
+                self.setState({
+                    messages: self.state.messages.slice(-30) //show last 30 message
+                })
+            }, 50);
         }, err => {
             logger.log(err)
         })
@@ -61,7 +69,7 @@ export default class ChatBox extends Component {
     render() {
         return (
             <div className="col-md-9">
-                <div className="chatbox-wrapper">
+                <div className="chatbox-wrapper" id="chat-box">
                     {
                         this.state.messages.map((data, index) => 
                             <ChatItem 
