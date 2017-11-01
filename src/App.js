@@ -13,8 +13,8 @@ class App extends Component {
         }
     }
 
-    _signIn() {
-        auth().then(uid => {
+    _signIn({displayname, color}) {
+        auth({displayname, color}).then(uid => {
             logger.log(uid)
             this.setState({isLoggedIn: true})
         }, err => {

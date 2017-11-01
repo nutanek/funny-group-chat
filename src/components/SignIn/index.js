@@ -8,7 +8,9 @@ export default class SignIn extends Component {
         super()
         this.state = {
             displayname: '',
-            color: '#dddddd'
+            color: '#dddddd',
+            invalid: false,
+            loading: false
         }
     }
 
@@ -23,7 +25,12 @@ export default class SignIn extends Component {
     }
 
     _join() {
-        this.props.signIn(this.state)
+        if (this.state.displayname === '') {
+            this.setState({ invalid: true })
+        } else {
+            this.setState({ loading: true })
+            this.props.signIn(this.state)         
+        }
     }
 
     render() {
@@ -31,11 +38,19 @@ export default class SignIn extends Component {
             <div className="container signin-wrapper">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2 box">
+                        {
+                            this.state.invalid && (
+                                <div className="alert alert-warning" role="alert">
+                                    Please input your name
+                                </div>
+                            )
+                        }
                         <div className="form-group">
-                            <label>Displayname:</label>
+                            <label>Displayname: ({25 - this.state.displayname.length})</label>
                             <input 
                                 type="text" 
                                 className="form-control input-lg"
+                                maxLength="25"
                                 value={this.state.displayname}
                                 onChange={this._changeDisplayname.bind(this)}
                             />
@@ -46,7 +61,13 @@ export default class SignIn extends Component {
                         </div>
                         <div className="row text-center">
                             <button className="btn btn-primary btn-lg" onClick={()=>this._join()}>
-                                <i className="glyphicon glyphicon-log-in"></i> JOIN
+                                {
+                                    this.state.loading ? (
+                                        <span><i className="glyphicon glyphicon-refresh loading"></i>Loading...</span>
+                                    ) : (
+                                        <span><i className="glyphicon glyphicon-log-in"></i> JOIN</span>
+                                    )
+                                }
                             </button>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ export function initFirebase () {
     logger.log('Firebase is starting')
 }
 
-export function auth () {
+export function auth ({displayname, color}) {
     return new Promise((resolve, reject) => {
         firebase.auth().signInAnonymously().catch(function(error) {
             let errorCode = error.code
@@ -26,7 +26,8 @@ export function auth () {
                 logger.log('uid ' + uid)
                 
                 setData('profiles/' + uid, {
-                    name: 'nutttt',
+                    name: displayname,
+                    color: color,
                     created: Date.now()
                 }).then(() => {
                     localStorage.setItem('uid', uid)
