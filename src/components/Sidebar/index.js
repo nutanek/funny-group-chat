@@ -1,26 +1,9 @@
 import React, { Component } from 'react'
 import './index.css'
-import * as logger from './../../utils/logger'
-import { getGroupInfo } from './../../utils/group'
+import { config } from './../../config'
 import UserOnline from './../UserOnline/'
 
 export default class UserList extends Component {
-    constructor() {
-        super()
-        this.state = {
-            groupInfo: {}
-        }
-    }
-
-    componentDidMount() {
-        getGroupInfo().then(data => {
-            this.setState({ groupInfo: data })
-            logger.log('groupInfo', data)
-        }, err => {
-            logger.log(err)
-        })
-    }
-
     _logout() {
         let loggedOut = window.confirm("Do you want to leave this group?")
         if (loggedOut) {
@@ -33,7 +16,7 @@ export default class UserList extends Component {
             <div className="col-md-3 userlist-wrapper">
                 <div className="row">
                     <div className="col-xs-12 text-center title">
-                        {this.state.groupInfo.name}
+                        {config.groupName}
                     </div>
                     <div className="col-xs-12 text-center">
                         <button className="btn btn-warning" onClick={()=>this._logout()}>

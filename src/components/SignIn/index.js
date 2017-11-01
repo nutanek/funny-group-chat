@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
+import { config } from './../../config'
 import ColorSelector from './../ColorSelector/'
 import * as logger from './../../utils/logger'
 
@@ -36,6 +37,9 @@ export default class SignIn extends Component {
     render() {
         return (
             <div className="container signin-wrapper">
+                <div className="row text-center group-name">
+                    <h1>{config.groupName}</h1>
+                </div>
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2 box">
                         {

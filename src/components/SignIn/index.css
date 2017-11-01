@@ -2,9 +2,14 @@
     margin-top: 20px;
 }
 
+.signin-wrapper .group-name {
+    margin-bottom: 20px;
+    color: #FFF;
+}
+
 .signin-wrapper .box {
     padding: 30px 30px;
-    background-color: #FFFFFF;
+    background-color: #FFF;
     border: 1px solid #CCC;
     border-radius: 5px;
 }

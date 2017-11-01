@@ -3,6 +3,7 @@ import { initFirebase, auth, logout } from './utils/firebase'
 import * as logger from './utils/logger'
 import Main from './components/Main/'
 import SignIn from './components/SignIn/'
+import './App.css'
 
 class App extends Component {
     constructor() {
