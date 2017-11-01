@@ -33,7 +33,7 @@ export default class Main extends Component {
             <div className="container main-wrapper">
                 <div className="row">
                     <ChatBox profiles={this.state.profiles}/>
-                    <Sidebar profiles={this.state.profiles}/>
+                    <Sidebar profiles={this.state.profiles} signOut={this.props.signOut}/>
                 </div>
             </div>  
         )

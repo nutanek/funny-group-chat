@@ -15,23 +15,52 @@ export function auth () {
         firebase.auth().signInAnonymously().catch(function(error) {
             let errorCode = error.code
             let errorMessage = error.message
-            logger.log('error', errorCode, errorMessage)
+            logger.log('error' +  errorCode + errorMessage)
         });
     
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 let isAnonymous = user.isAnonymous
                 let uid = user.uid
-                logger.log('isAnonymous', isAnonymous)
-                logger.log('uid', uid)
-                localStorage.setItem('uid', uid);
-                resolve(uid)
+                logger.log('isAnonymous ' + isAnonymous)
+                logger.log('uid ' + uid)
+                
+
+                setData('profiles/'+uid, {
+                    name: 'nutttt',
+                    created: Date.now()
+                }).then(() => {
+                    console.log("ssssssssssss")
+                    localStorage.setItem('uid', uid)
+                    resolve(uid) 
+                }, () => {
+                    reject()
+                })
             } else {
-                // User is signed out.
-                reject()
+                let uid = localStorage.getItem('uid')
+                logger.log("logged out")
             }
         });
     });
+}
+
+export function logout () {
+    return new Promise((resolve, reject) => {
+        let uid = localStorage.getItem('uid')
+        setData('profiles/'+uid, null).then(() => {
+            localStorage.removeItem('uid')
+            firebase.auth().signOut().then(function() {
+                resolve() 
+            }, () => {
+                reject()
+            })
+        }, () => {
+            reject()
+        })
+
+
+        
+    })
 }
 
 export function getRef (path) {
@@ -57,4 +86,25 @@ export function addData (path, data) {
         })
     })
 }
+
+export function setData (path, data) {
+    return new Promise((resolve, reject) => {
+        db.ref(path).set(data).then(() => {
+            resolve()
+        }, () => {
+            reject()            
+        })
+    })
+}
+
+export function removeData (path) {
+    return new Promise((resolve, reject) => {
+        db.ref(path).remove().then(() => {
+            resolve()
+        }, () => {
+            reject()            
+        })
+    })
+}
+
 

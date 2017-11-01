@@ -1,6 +1,7 @@
 .useronline-wrapper {
-    /* height: calc(100vh - 20px); */
+    height: calc(100vh - 150px);
     background-color: #2c3e50;
+    overflow-y: auto;
 }
 
 .useronline-wrapper .list {
