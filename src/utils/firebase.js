@@ -24,6 +24,7 @@ export function auth () {
                 let uid = user.uid
                 logger.log('isAnonymous', isAnonymous)
                 logger.log('uid', uid)
+                localStorage.setItem('uid', uid);
                 resolve(uid)
             } else {
                 // User is signed out.
@@ -31,6 +32,10 @@ export function auth () {
             }
         });
     });
+}
+
+export function getRef (path) {
+    return db.ref(path)
 }
 
 export function getData (path) {
@@ -42,3 +47,14 @@ export function getData (path) {
         })
     })
 }
+
+export function addData (path, data) {
+    return new Promise((resolve, reject) => {
+        db.ref(path).push(data).then(() => {
+            resolve()
+        }, () => {
+            reject()            
+        })
+    })
+}
+

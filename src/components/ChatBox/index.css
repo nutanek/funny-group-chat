@@ -1,6 +1,5 @@
 .chatbox-wrapper {
-    height: calc(100vh - 20px);
-    background-color: #FFF;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: calc(100vh - 90px);
 }
