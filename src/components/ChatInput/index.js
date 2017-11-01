@@ -14,6 +14,12 @@ export default class ChatBox extends Component {
         this.setState({ text: msg })
     }
 
+    _checKEnter(e) {
+        if (e.key === 'Enter') {
+            this._sendMessage()
+        }
+    }
+
     _sendMessage() {
         this.props.send(this.state.text)
         this.setState({ text: '' })
@@ -28,7 +34,7 @@ export default class ChatBox extends Component {
                             type="text" 
                             className="form-control" 
                             placeholder="say something..."
-                            
+                            onKeyPress={this._checKEnter.bind(this)}
                             onChange={this._changeMessage.bind(this)}
                             value={this.state.text}
                             />
