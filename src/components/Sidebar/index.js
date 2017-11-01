@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './index.css'
 import * as logger from './../../utils/logger'
 import { getGroupInfo } from './../../utils/group'
+import UserOnline from './../UserOnline/'
 
 export default class UserList extends Component {
     constructor() {
@@ -27,6 +28,7 @@ export default class UserList extends Component {
                     <div className="col-xs-12 text-center title">
                         {this.state.groupInfo.name}
                     </div>
+                    <UserOnline profiles={this.props.profiles}/>
                 </div>
             </div>
         )

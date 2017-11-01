@@ -5,6 +5,7 @@ import { sendMessage } from './../../utils/chat'
 import { getRef } from './../../utils/firebase'
 import * as logger from './../../utils/logger'
 import ChatInput from './../ChatInput/'
+import ChatItem from './../ChatItem/'
 
 
 export default class ChatBox extends Component {
@@ -46,7 +47,7 @@ export default class ChatBox extends Component {
                 messages: [...self.state.messages, data]
             })
         }, err => {
-            logger(err)
+            logger.log(err)
         })
     }
 
@@ -56,9 +57,11 @@ export default class ChatBox extends Component {
                 <div className="chatbox-wrapper">
                     {
                         this.state.messages.map((data, index) => 
-                            <li key={index}>
-                                {data.msg}
-                            </li>
+                            <ChatItem 
+                                key={index}
+                                msg={data.msg}
+                                uid={data.uid}>
+                            </ChatItem>
                         )
                     }
                 </div>

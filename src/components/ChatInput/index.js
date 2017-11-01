@@ -16,9 +16,7 @@ export default class ChatBox extends Component {
 
     _sendMessage() {
         this.props.send(this.state.text)
-        this.setState({
-            text: ''
-        })
+        this.setState({ text: '' })
     }
 
     render() {
