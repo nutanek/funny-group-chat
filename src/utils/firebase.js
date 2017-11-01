@@ -25,19 +25,16 @@ export function auth () {
                 logger.log('isAnonymous ' + isAnonymous)
                 logger.log('uid ' + uid)
                 
-
-                setData('profiles/'+uid, {
+                setData('profiles/' + uid, {
                     name: 'nutttt',
                     created: Date.now()
                 }).then(() => {
-                    console.log("ssssssssssss")
                     localStorage.setItem('uid', uid)
                     resolve(uid) 
                 }, () => {
                     reject()
                 })
             } else {
-                let uid = localStorage.getItem('uid')
                 logger.log("logged out")
             }
         });
@@ -47,7 +44,7 @@ export function auth () {
 export function logout () {
     return new Promise((resolve, reject) => {
         let uid = localStorage.getItem('uid')
-        setData('profiles/'+uid, null).then(() => {
+        setData('profiles/' + uid, null).then(() => {
             localStorage.removeItem('uid')
             firebase.auth().signOut().then(function() {
                 resolve() 
@@ -57,9 +54,6 @@ export function logout () {
         }, () => {
             reject()
         })
-
-
-        
     })
 }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './index.css'
 import * as logger from './../../utils/logger'
 import { getGroupInfo } from './../../utils/group'
-import { logout } from './../../utils/firebase'
 import UserOnline from './../UserOnline/'
 
 export default class UserList extends Component {
@@ -27,7 +26,6 @@ export default class UserList extends Component {
         if (loggedOut) {
             this.props.signOut()
         }
-        
     }
 
     render() {

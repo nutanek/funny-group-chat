@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import './index.css'
 import { getRef } from './../../utils/firebase'
 import ChatBox from './../ChatBox/'
 import Sidebar from './../Sidebar/'
+import * as logger from './../../utils/logger'
 
 export default class Main extends Component {
     constructor() {
@@ -13,6 +15,11 @@ export default class Main extends Component {
     }
 
     componentDidMount() {
+        this._onUserAdded()
+        this._onUserRemoved()
+    }
+
+    _onUserAdded() {
         let self = this
         let ref = getRef('profiles')
         ref.on('child_added', function(snap) {
@@ -24,7 +31,25 @@ export default class Main extends Component {
                 profiles: [...self.state.profiles, profile]
             })
         }, err => {
-            // logger.log(err)
+            logger.log(err)
+        })
+    }
+
+    _onUserRemoved() {
+        let self = this
+        let ref = getRef('profiles')
+        ref.on('child_removed', function(snap) {
+            let profileIndex = _.findIndex(self.state.profiles, ['uid', snap.key]);
+            let profiles = self.state.profiles
+            if (profileIndex !== -1) {
+                profiles[profileIndex].deleted = true
+                console.log(profiles)
+                self.setState({
+                    profiles,
+                })
+            }
+        }, err => {
+            logger.log(err)
         })
     }
 

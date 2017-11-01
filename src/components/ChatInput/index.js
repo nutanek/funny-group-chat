@@ -59,7 +59,7 @@ export default class ChatBox extends Component {
                         <span className="input-group-btn">
                             <Emoji isOpen={this.state.isOpenEmoji} select={this._selectEmoji.bind(this)}/>
                             <button className="btn btn-default" onClick={()=>this._toggleEmoji()}>
-                                😃
+                                <span role="img" aria-label="emoji">😃</span>
                             </button>
                             <button 
                                 className="btn btn-default" 
