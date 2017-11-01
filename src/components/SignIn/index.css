@@ -1,3 +1,14 @@
 .signin-wrapper {
-   
+    margin-top: 20px;
+}
+
+.signin-wrapper .box {
+    padding: 30px 30px;
+    background-color: #FFFFFF;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+}
+
+.signin-wrapper .box i {
+    margin-right: 10px;
 }

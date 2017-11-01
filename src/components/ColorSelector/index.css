@@ -1,0 +1,23 @@
+.colorselector-wrapper {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.colorselector-wrapper .color {
+    width: 90px;
+    height: 90px;
+    background: #FFCC00;
+    border-radius: 100%;
+    display: inline-block;
+    transition: all .2s ease-in-out;
+}
+
+.colorselector-wrapper .color:hover {
+    cursor: pointer;
+    transform: scale(1.3);
+}
+
+.colorselector-wrapper .color-selected {
+    border: 8px solid #333;
+    transform: scale(1.3);
+}
