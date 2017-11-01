@@ -13,6 +13,10 @@ class App extends Component {
         }
     }
 
+    componentDidMount() {
+        this._signOut()
+    }
+
     _signIn({displayname, color}) {
         auth({displayname, color}).then(uid => {
             logger.log(uid)

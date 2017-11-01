@@ -56,7 +56,7 @@ export default class SignIn extends Component {
                             />
                         </div>
                         <div className="form-group">
-                            <label>Your Color:</label>
+                            <label>Text Background:</label>
                             <ColorSelector select={this._selectColor.bind(this)}/>
                         </div>
                         <div className="row text-center">
