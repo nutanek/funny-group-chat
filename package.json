@@ -10,6 +10,7 @@
     "css-loader": "^0.28.7",
     "firebase": "^4.6.0",
     "html-webpack-plugin": "^2.30.1",
+    "if-emoji": "^0.1.0",
     "js-base64": "^2.3.2",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
