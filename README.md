@@ -49,7 +49,7 @@ yarn build
 You will get **build** folder and you can use it on production
 
 
-## Authors
+## Author
 
 * **NutAnek** -  [https://github.com/nutanek](https://github.com/nutanek)
 
