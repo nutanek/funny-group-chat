@@ -78,6 +78,7 @@ export default class ChatBox extends Component {
                                     key={index}
                                     msg={data.msg}
                                     uid={data.uid}
+                                    time={data.created}
                                     color={profileInfo.color}                            
                                     displayname={profileInfo.name}>
                                 </ChatItem>
