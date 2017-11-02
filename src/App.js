@@ -54,8 +54,6 @@ class App extends Component {
                 <SignIn signIn={this._signIn.bind(this)}/>
             )
         }
-
-       
     }
 }
 
