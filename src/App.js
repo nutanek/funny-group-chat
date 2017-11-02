@@ -36,14 +36,9 @@ class App extends Component {
     }
 
     render() {
-        const wrapper = {
-            backgroundColor: '#DDD',
-            height: '100vh'
-        }
-
         if (this.state.isLoggedIn) {
             return (
-                <div className="container-fluid" style={wrapper}>
+                <div className="container-fluid app-wrapper">
                     <div className="row">
                         <Main isLoggedIn={this.state.isLoggedIn} signOut={this._signOut.bind(this)}/>
                     </div>
