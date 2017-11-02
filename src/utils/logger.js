@@ -1,7 +1,5 @@
-import { config } from './../config.js'
-
 export function log (msg) {
-    if (config.mode === 'dev') {
+    if (process.env.NODE_ENV === 'development') {
         console.log(msg)
     }
 }

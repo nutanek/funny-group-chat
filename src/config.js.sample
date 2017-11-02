@@ -1,6 +1,5 @@
 export const config = {
     groupName: 'Funny Chat',
-    mode: 'dev', //dev, prod
     firebase: {
         apiKey: "",
         authDomain: "",
