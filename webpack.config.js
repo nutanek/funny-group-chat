@@ -11,6 +11,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'src/index.js'),
     output: {
         path: path.resolve(__dirname, 'build'),
+        publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
         filename: 'bundle.js'
     },
     module: {
